@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=laplace_solver
+#SBATCH --output=result.out
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=8
+#SBATCH --time=00:10:00
+#SBATCH --partition=standard
+
+# Load necessary modules
+module load gcc/10.2.0
+module load openmpi/4.0.5
+
+# Execute the MPI program
+srun heat-complete-gcc 1000 10000 input.txt output.txt
